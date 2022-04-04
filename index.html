@@ -16,9 +16,9 @@
                 <div class="row">
                     <div class="col-4 bg-white">
                         <div class="d-flex justify-content-between align-items-center p-3 ">
-                            <div>
-                                <img src="./asset/img/avatar_io.jpg" alt="profilo" class="size-custom rounded-circle">  
-                                <span>Sofia</span>
+                            <div v-for="(user, index) in user">
+                                <img :src="avatar"  alt="profilo" class="size-custom rounded-circle">  
+                                <span>{{user.name}}</span>
                             </div>
                             <div class="d-flex "> 
                                 <i class="fa-solid fa-circle-notch me-2 color-custom-icons"></i>
@@ -40,18 +40,18 @@
                             <input type="text" class="form-control bg-white color-c" placeholder="Cerca o inizia una nuova chat">
                         </div>
                         <div class="  py-3">
-                            <ul  class="list-group list-group-flush ">
+                            <ul  class="list-group list-group-flush "  v-for="(contact, index) in contacts">
                                 <li class="d-flex justify-contente-between align-items-center list-group-item">
                                     <div class="d-flex justify-contente-between align-items-center "> 
                                         <div class="d-flex justify-contente-between align-items-center ">
                                             <img class="size-custom rounded-circle" src="./asset/img/avatar_1.jpg" alt="">   
                                         </div>
-                                        <div class="d-flex align-items-start flex-column bd-highlight mb-3">
-                                           <span class="mb-auto p-2 bd-highlight" >nome</span>
+                                        <div class="d-flex align-items-start flex-column bd-highlight mb-3 " >
+                                           <span class="mb-auto p-2 bd-highlight" > {{contact.name}} </span>
                                             <span class="ps-2 bd-highlight" >ultimo messaggio inviato</span>
                                         </div>
                                         <div class="mb-5">
-                                            <span>12.00</span>
+                                            <span>12:00</span>
                                         </div>
                                     </div>
                                 </li>
@@ -60,21 +60,41 @@
 
                     </div>
                    
-                    <div class="col-8 bg-white">
-                        <div class="d-flex justify-content-between align-items-center p-3">
-                            <div class="h-100">
+                    <div class="col-8  bg-white  ">
+                        <div class="d-flex justify-content-between align-items-center py-2">
+                            <div class="d-flex align-items-center h-100">
                                 <img src="./asset/img/avatar_io.jpg" alt="profilo" class="size-custom rounded-circle">  
-                                <span>Sofia</span>
+                                <span>Michele </span>
                             </div>
-                            <div class="d-flex "> 
+                            <div class="d-flex justify-contente-between align-items-center "> 
                                 <i class="fa-solid fa-bell-slash color-custom-icons me-2"></i>
                                 <i class="fa-solid fa-link color-custom-icons me-2"></i>
                                 <i class="fa-solid fa-ellipsis-vertical  color-custom-icons"></i>
                             </div>
                         </div>  
                         <div class="bg-chat h-100">
-                            
-                        </div>  
+                            <ul class="list-group list-group-flush d-flex flex-column">
+                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-end bg-send rounded-3 mt-4 me-5">
+                                    Hai portato a spasso il cane?
+                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">15:30</span>
+                                </li>
+                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-end bg-send rounded-3 my-1 me-5">
+                                    Ricordati di stendere i panni
+                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">15:50</span>
+                                </li>
+                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-start rounded-3 my-3 mx-5">
+                                    Tutto fatto!
+                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">16:15</span>
+                                </li>
+                            </ul> 
+                        </div> 
+                        <div>
+                            <div class="input-group input-group-lg d-flex justify-content-between align-items-center p-1 bg-footer">
+                                <i class="fa-solid fa-face-smile color-custom-icons p-3"></i>
+                                <input type="text" class="form-control rounded-3 border-0" placeholder="Scrivi un messaggio">
+                                <i class="fa-solid fa-microphone color-custom-icons p-3"></i> 
+                            </div>
+                         </div>
                     </div>
                 </div>
             </div>    
