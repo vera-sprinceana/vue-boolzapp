@@ -1,0 +1,34 @@
+.sfondo{
+    height:100vh;
+    background-image:
+        linear-gradient(to bottom, 
+        #359589 0px, 
+        #359589 15vh, 
+        #dadbd5 15vh, 
+        #d2dbdd 100%);
+   
+}
+
+.size-custom{
+    width: 60px;
+    height: 60px;
+}
+.color-custom-icons{
+    color: #b0b1b3;
+}
+p{
+    margin-bottom: 0;
+}
+.c-custom{
+    color: #99dafd;
+}
+.bg-custom{
+    background-color: #99dafd;
+}
+.color-c{
+    color: #6e8f9c;
+}
+.bg-chat{
+    background-image: url(../img/mine.jpg);
+    
+}
