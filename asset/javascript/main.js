@@ -3,6 +3,8 @@ var app=new Vue(
     {
         el:'#root',
         data:{
+            contattiUtente:'',
+            sentOrReceived:'',
             user:[
                 {
                     name:'Sofia',
@@ -177,7 +179,20 @@ var app=new Vue(
         },
         
         methods:{
+            addIndex:function(){
+            },
+           status:function(element){
+               if(element.status=='sent'){
+                 element.status=true; 
+               }else{
+                   element.status=false;
+               }
+               
+            }
 
+           }
         }
-    }
+    
+
+    
 );

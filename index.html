@@ -11,13 +11,13 @@
 </head>
 <body>
     <div id="root">
-        <div class="sfondo py-3">
-            <div class="container h-100">
-                <div class="row">
+        <div class="sfondo py-5">
+            <div class="container ">
+                <div class="row h-100">
                     <div class="col-4 bg-white">
                         <div class="d-flex justify-content-between align-items-center p-3 ">
                             <div v-for="(user, index) in user">
-                                <img :src="avatar"  alt="profilo" class="size-custom rounded-circle">  
+                                <img :src="`./asset/img/avatar${user.avatar}.jpg`" alt="immagine profilo di $(user.name)" class="size-custom rounded-circle">  
                                 <span>{{user.name}}</span>
                             </div>
                             <div class="d-flex "> 
@@ -40,14 +40,18 @@
                             <input type="text" class="form-control bg-white color-c" placeholder="Cerca o inizia una nuova chat">
                         </div>
                         <div class="  py-3">
-                            <ul  class="list-group list-group-flush "  v-for="(contact, index) in contacts">
-                                <li class="d-flex justify-contente-between align-items-center list-group-item">
+                            <ul  class="list-group list-group-flush ">
+                                <li class="d-flex justify-contente-between align-items-center list-group-item"
+                                v-for="(element, index) in contacts"
+                               
+                                @click="addIndex"
+                                > {{ index}}
                                     <div class="d-flex justify-contente-between align-items-center "> 
                                         <div class="d-flex justify-contente-between align-items-center ">
-                                            <img class="size-custom rounded-circle" src="./asset/img/avatar_1.jpg" alt="">   
+                                            <img class="size-custom rounded-circle" :src="`./asset/img/avatar${element.avatar}.jpg`" alt="">   
                                         </div>
                                         <div class="d-flex align-items-start flex-column bd-highlight mb-3 " >
-                                           <span class="mb-auto p-2 bd-highlight" > {{contact.name}} </span>
+                                           <span class="mb-auto p-2 bd-highlight" > {{element.name}} </span>
                                             <span class="ps-2 bd-highlight" >ultimo messaggio inviato</span>
                                         </div>
                                         <div class="mb-5">
@@ -60,10 +64,10 @@
 
                     </div>
                    
-                    <div class="col-8  bg-white  ">
-                        <div class="d-flex justify-content-between align-items-center py-2">
-                            <div class="d-flex align-items-center h-100">
-                                <img src="./asset/img/avatar_io.jpg" alt="profilo" class="size-custom rounded-circle">  
+                    <div class="col-8  bg-white">
+                        <div class="d-flex justify-content-between align-items-center py-2  ">
+                            <div class="d-flex align-items-center">
+                                <img src="./asset/img/avatar_1.jpg" alt="profilo" class="size-custom rounded-circle">  
                                 <span>Michele </span>
                             </div>
                             <div class="d-flex justify-contente-between align-items-center "> 
@@ -73,18 +77,20 @@
                             </div>
                         </div>  
                         <div class="bg-chat h-100">
-                            <ul class="list-group list-group-flush d-flex flex-column">
-                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-end bg-send rounded-3 mt-4 me-5">
-                                    Hai portato a spasso il cane?
-                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">15:30</span>
+                            <ul class="list-group list-group-flush d-flex flex-column"
+                            v-for="(element, index) in contacts"
+                            >
+                                <li class="d-flex justify-contente-between align-items-center list-group-item  align-self-end rounded-3 mt-4 me-5"
+                                 v-for="(messages, element) in contacts"   
+                                :class="(element.status==true) ? '' : 'bg-sent'"
+                                     
+                                >
+                                    {{`${element.message }`}}
+                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">  {{`${element.date }`}} </span>
                                 </li>
-                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-end bg-send rounded-3 my-1 me-5">
-                                    Ricordati di stendere i panni
-                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">15:50</span>
-                                </li>
-                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-start rounded-3 my-3 mx-5">
-                                    Tutto fatto!
-                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">16:15</span>
+                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-start rounded-3 my-3 mx-5 ">
+                                    {{`${element.message }`}}
+                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end"> {{`${element.date }`}}</span>
                                 </li>
                             </ul> 
                         </div> 
@@ -99,13 +105,6 @@
                 </div>
             </div>    
         </div>
-        
-
-
-
-
-
-
     </div>
 
 
