@@ -43,9 +43,8 @@
                             <ul  class="list-group list-group-flush ">
                                 <li class="d-flex justify-contente-between align-items-center list-group-item"
                                 v-for="(element, index) in contacts"
-                               
-                                @click="addIndex"
-                                > {{ index}}
+                                @click="changeCIndex(index)"
+                                > 
                                     <div class="d-flex justify-contente-between align-items-center "> 
                                         <div class="d-flex justify-contente-between align-items-center ">
                                             <img class="size-custom rounded-circle" :src="`./asset/img/avatar${element.avatar}.jpg`" alt="">   
@@ -67,8 +66,8 @@
                     <div class="col-8  bg-white">
                         <div class="d-flex justify-content-between align-items-center py-2  ">
                             <div class="d-flex align-items-center">
-                                <img src="./asset/img/avatar_1.jpg" alt="profilo" class="size-custom rounded-circle">  
-                                <span>Michele </span>
+                                <img :src="`./asset/img/avatar${contacts[indexCounter].avatar}.jpg`" alt="profilo" class="size-custom rounded-circle">  
+                                <span> {{contacts[indexCounter].name}} </span>
                             </div>
                             <div class="d-flex justify-contente-between align-items-center "> 
                                 <i class="fa-solid fa-bell-slash color-custom-icons me-2"></i>
@@ -77,27 +76,24 @@
                             </div>
                         </div>  
                         <div class="bg-chat h-100">
-                            <ul class="list-group list-group-flush d-flex flex-column"
-                            v-for="(element, index) in contacts"
-                            >
-                                <li class="d-flex justify-contente-between align-items-center list-group-item  align-self-end rounded-3 mt-4 me-5"
-                                 v-for="(messages, element) in contacts"   
-                                :class="(element.status==true) ? '' : 'bg-sent'"
-                                     
+                            <ul class="list-group list-group-flush d-flex flex-column">
+                                <li class="d-flex justify-contente-between align-items-center list-group-item   rounded-3 mt-4 mx-5"
+                                v-for="(element, index) in contacts[indexCounter].messages"
+                                :class="(element.status=='sent') ? 'align-self-end bg-sent' : 'align-self-start bg-received'"
                                 >
-                                    {{`${element.message }`}}
-                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end">  {{`${element.date }`}} </span>
-                                </li>
-                                <li class="d-flex justify-contente-between align-items-center list-group-item align-self-start rounded-3 my-3 mx-5 ">
-                                    {{`${element.message }`}}
-                                    <span class="f_size color-custom-icons mt-4 ms-4 flex-end"> {{`${element.date }`}}</span>
+                                    {{element.message}}
+                                    <span class="f_size color-custom-icons mt-4 ms-4 text-end">{{element.date}}</span>
                                 </li>
                             </ul> 
                         </div> 
                         <div>
                             <div class="input-group input-group-lg d-flex justify-content-between align-items-center p-1 bg-footer">
                                 <i class="fa-solid fa-face-smile color-custom-icons p-3"></i>
-                                <input type="text" class="form-control rounded-3 border-0" placeholder="Scrivi un messaggio">
+                                <input type="text" class="form-control rounded-3 border-0" placeholder="Scrivi un messaggio" 
+                                v-model="newMessage"
+                                v-model="bootMessage"
+                                @keyup.enter="addNewMessageSent"
+                                >
                                 <i class="fa-solid fa-microphone color-custom-icons p-3"></i> 
                             </div>
                          </div>

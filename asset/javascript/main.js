@@ -3,8 +3,7 @@ var app=new Vue(
     {
         el:'#root',
         data:{
-            contattiUtente:'',
-            sentOrReceived:'',
+           
             user:[
                 {
                     name:'Sofia',
@@ -174,12 +173,16 @@ var app=new Vue(
                     //             }
                     //         ],
                     //     }
-            ]
-            
+            ],
+            indexCounter:0,
+
+            newMessage:'',
+            bootMessage: '',
         },
         
         methods:{
-            addIndex:function(){
+            changeCIndex: function(index){
+                this.indexCounter =index;
             },
            status:function(element){
                if(element.status=='sent'){
@@ -188,11 +191,35 @@ var app=new Vue(
                    element.status=false;
                }
                
-            }
-
-           }
+            },
+            addNewMessageSent:function(newMessage){
+                   newMessage={
+                    message:this.newMessage,
+                    date:'',
+                    status:'sent',
+                }
+                this.contacts[this.indexCounter].messages.push(newMessage);
+                setTimeout(function(bootMessage){
+                    bootMessage={
+                    message:'ok',
+                    date:'',
+                    status:'received',
+                }
+                this.contacts[this.indexCounter].messages.push(bootMessage);   
+                    }, 2000);
+                    
+            },
+                
+                    
+                
+            
+            
+            
+           
         }
     
 
     
+
+    }
 );
