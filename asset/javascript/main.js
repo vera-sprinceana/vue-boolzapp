@@ -173,11 +173,11 @@ var app=new Vue(
                     //             }
                     //         ],
                     //     }
+                    
             ],
+            
             indexCounter:0,
-
             newMessage:'',
-            bootMessage: '',
         },
         
         methods:{
@@ -193,33 +193,28 @@ var app=new Vue(
                
             },
             addNewMessageSent:function(newMessage){
+                let currentDate= dayjs().format('DD/MM/YYYY');
+                let hour= dayjs().get('hour');
+                let minute=dayjs().get('minute')
                    newMessage={
                     message:this.newMessage,
-                    date:'',
+                    date:`${currentDate} ${hour}: ${minute}`,
                     status:'sent',
-                }
-                this.contacts[this.indexCounter].messages.push(newMessage);
-                setTimeout(function(bootMessage){
-                    bootMessage={
+                };
+                let newMessageReceived={
                     message:'ok',
-                    date:'',
+                    date:`${currentDate} ${hour}: ${minute}`,
                     status:'received',
-                }
-                this.contacts[this.indexCounter].messages.push(bootMessage);   
-                    }, 2000);
-                    
+                }; 
+                this.contacts[this.indexCounter].messages.push(newMessage);
+                setTimeout(
+                    () =>{
+                        this.contacts[this.indexCounter].messages.push(newMessageReceived);  
+                    },2000);  
             },
-                
-                    
-                
-            
-            
-            
-           
+            searcNome:function(element){
+         
+            }  
         }
-    
-
-    
-
     }
 );
