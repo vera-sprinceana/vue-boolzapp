@@ -13,9 +13,9 @@
 <body>
     <div id="root">
         <div class="sfondo py-5">
-            <div class="container ">
-                <div class="row h-100">
-                    <div class="col-4 bg-white">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-4 bg-white ">
                         <div class="d-flex justify-content-between align-items-center p-3 ">
                             <div v-for="(user, index) in user">
                                 <img :src="`./asset/img/avatar${user.avatar}.jpg`" alt="immagine profilo di $(user.name)" class="size-custom rounded-circle">  
@@ -39,13 +39,13 @@
                         <div class="input-group input-group-lg py-2 ">
                             <span class="input-group-text bg-white color-c" id="inputGroup-sizing-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
                             <input type="text" class="form-control bg-white color-c"
-                             placeholder="Cerca o inizia una nuova chat"
- 
+                            placeholder="Cerca o inizia una nuova chat"
+                            @keyup.enter="searchNome"
                             >
                              
                         </div>
-                        <div class="  py-3">
-                            <ul  class="list-group list-group-flush ">
+                        <div class="py-3 hw-custo">
+                            <ul  class="list-group list-group-flush hw-custom">
                                 <li class="d-flex justify-contente-between align-items-center list-group-item"
                                 v-for="(element, index) in contacts"
                                 @click="changeCIndex(index)"
@@ -54,21 +54,20 @@
                                         <div class="d-flex justify-contente-between align-items-center ">
                                             <img class="size-custom rounded-circle" :src="`./asset/img/avatar${element.avatar}.jpg`" alt="">   
                                         </div>
-                                        <div class="d-flex align-items-start flex-column bd-highlight mb-3 " >
+                                        <div class="d-flex align-items-start flex-column bd-highlight mb-1 me-3" >
                                            <span class="mb-auto p-2 bd-highlight" > {{element.name}} </span>
-                                            <span class="ps-2 bd-highlight" >ultimo messaggio inviato</span>
+                                            <span class="ps-2  color-custom-icons" >ultimo messaggio inviato</span>
                                         </div>
-                                        <div class="mb-5">
-                                            <span>12:00</span>
+                                        <div class="mb-2 ms-5">
+                                            <span class="color-custom-icons">12:00</span>
                                         </div>
                                     </div>
                                 </li>
                            </ul>
                         </div>
-
                     </div>
                    
-                    <div class="col-8  bg-white">
+                    <div class="col-8  bg-white ">
                         <div class="d-flex justify-content-between align-items-center py-2  ">
                             <div class="d-flex align-items-center">
                                 <img :src="`./asset/img/avatar${contacts[indexCounter].avatar}.jpg`" alt="profilo" class="size-custom rounded-circle">  
@@ -80,9 +79,9 @@
                                 <i class="fa-solid fa-ellipsis-vertical  color-custom-icons"></i>
                             </div>
                         </div>  
-                        <div class="bg-chat h-custom">
-                            <ul class="list-group list-group-flush d-flex flex-column">
-                                <li class="d-flex justify-contente-between align-items-center list-group-item   rounded-3 mt-4 mx-5"
+                        <div class="bg-chat  ">
+                            <ul class="list-group list-group-flush d-flex flex-column  h-custom">
+                                <li class="d-flex justify-contente-between align-items-center list-group-item   rounded-3 mt-4 mx-5 "
                                 v-for="(element, index) in contacts[indexCounter].messages"
                                 :class="(element.status=='sent') ? 'align-self-end bg-sent' : 'align-self-start bg-received'"
                                 >

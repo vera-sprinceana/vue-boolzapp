@@ -50,3 +50,19 @@ p{
 .h-custom{
     height:82%;
 }
+.ow-custom{
+    height: 35%;
+    overflow:scroll;
+}
+.ow-custom2{
+    height: 44%;
+    
+}
+.h-custom{
+    height: 70vh;
+    overflow:auto;
+}
+.hw-custom{
+    height: 52vh;
+    overflow:auto;
+}
