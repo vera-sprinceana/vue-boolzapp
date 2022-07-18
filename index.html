@@ -37,18 +37,18 @@
                             </div>
                         </div>
                         <div class="input-group input-group-lg py-2 ">
-                            <span class="input-group-text bg-white color-c" id="inputGroup-sizing-lg"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input type="text" class="form-control bg-white color-c"
+                            
+                            <input type="text" class="form-control bg-white color-c px-5"
                             placeholder="Cerca o inizia una nuova chat"
-                            @keyup.enter="searchNome"
+                            v-model="searchInput" 
                             >
-                             
+                       
                         </div>
                         <div class="py-3 hw-custo">
                             <ul  class="list-group list-group-flush hw-custom">
                                 <li class="d-flex justify-contente-between align-items-center list-group-item"
-                                v-for="(element, index) in contacts"
-                                @click="changeCIndex(index)"
+                                 @click="changeCIndex(index)"
+                                v-for="(element, index) in searchConctact"
                                 > 
                                     <div class="d-flex justify-contente-between align-items-center "> 
                                         <div class="d-flex justify-contente-between align-items-center ">

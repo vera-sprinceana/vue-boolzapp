@@ -3,7 +3,7 @@ var app=new Vue(
     {
         el:'#root',
         data:{
-           
+            searchInput: '',
             user:[
                 {
                     name:'Sofia',
@@ -189,7 +189,7 @@ var app=new Vue(
                if(element.status=='sent'){
                  element.status=true; 
                }else{
-                   element.status=false;
+                   element.status = false;
                }
                
             },
@@ -213,16 +213,24 @@ var app=new Vue(
                         this.contacts[this.indexCounter].messages.push(newMessageReceived);  
                     },2000);  
             },
-            searchNome:function(){
-                this.contacts.forEach(element=>{
-                    if(element.name.toLowerCase().includes(this.filter.toLowerCase())){
-                        element.visible=false
-                    }else{
-                    element.visible=false;
+            // searchNome:function(){
+            //     this.contacts.forEach(element=>{
+            //         if(element.name.toLowerCase().includes(this.filter.toLowerCase())){
+            //             element.visible=false
+            //         }else{
+            //         element.visible=false;
+            //     }
+            //         element.visible=true; 
+            //     })
+            // },      
+        },
+        computed: {
+            searchConctact : function(){
+                return this.contacts.filter(elm => {
+                    return elm.name.toLowerCase().includes(this.searchInput.toLowerCase())                
                 }
-                    element.visible=true; 
-                })
-            },      
-        }
+                )
+            },
+        },
     }
 );
